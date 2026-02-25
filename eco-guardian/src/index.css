@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply transition-colors duration-200;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-900;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  @apply text-gray-900 dark:text-gray-50;
+  letter-spacing: -0.3px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-eco-500 dark:bg-eco-600 rounded-full hover:bg-eco-600 dark:hover:bg-eco-500;
+}
+
+@layer components {
+  /* Eco Cards */
+  .eco-card {
+    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 dark:border-gray-700;
+  }
+
+  .eco-card-elevated {
+    @apply eco-card hover:translate-y-[-4px];
+  }
+
+  /* Buttons */
+  .eco-btn {
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  .eco-btn-primary {
+    @apply eco-btn bg-gradient-to-r from-eco-500 to-eco-600 text-white shadow-md hover:shadow-lg hover:shadow-eco-500/30;
+  }
+
+  .eco-btn-primary:disabled {
+    @apply bg-gray-400 shadow-none hover:shadow-none;
+  }
+
+  .eco-btn-secondary {
+    @apply eco-btn bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600;
+  }
+
+  .eco-btn-outline {
+    @apply eco-btn border-2 border-eco-500 text-eco-600 dark:text-eco-400 hover:bg-eco-50 dark:hover:bg-eco-900/20;
+  }
+
+  .eco-btn-danger {
+    @apply eco-btn bg-red-500 text-white hover:bg-red-600 shadow-md hover:shadow-lg hover:shadow-red-500/30;
+  }
+
+  .eco-btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  .eco-btn-lg {
+    @apply px-6 py-3 text-lg;
+  }
+
+  /* Inputs */
+  .eco-input {
+    @apply w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-eco-500 focus:ring-2 focus:ring-eco-500/20 transition-all duration-200;
+  }
+
+  .eco-input::placeholder {
+    @apply text-gray-400 dark:text-gray-500;
+  }
+
+  /* Badges */
+  .eco-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .eco-badge-success {
+    @apply eco-badge bg-eco-100 dark:bg-eco-900/30 text-eco-700 dark:text-eco-300;
+  }
+
+  .eco-badge-warning {
+    @apply eco-badge bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300;
+  }
+
+  .eco-badge-info {
+    @apply eco-badge bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300;
+  }
+
+  /* Alerts */
+  .eco-alert {
+    @apply p-4 rounded-xl border-l-4 flex gap-3;
+  }
+
+  .eco-alert-success {
+    @apply eco-alert bg-eco-50 dark:bg-eco-900/20 border-eco-500 text-eco-700 dark:text-eco-300;
+  }
+
+  .eco-alert-error {
+    @apply eco-alert bg-red-50 dark:bg-red-900/20 border-red-500 text-red-700 dark:text-red-300;
+  }
+
+  .eco-alert-warning {
+    @apply eco-alert bg-amber-50 dark:bg-amber-900/20 border-amber-500 text-amber-700 dark:text-amber-300;
+  }
+
+  /* Text */
+  .eco-heading {
+    @apply font-bold tracking-tight;
+  }
+
+  .eco-heading-xl {
+    @apply eco-heading text-4xl md:text-5xl;
+  }
+
+  .eco-heading-lg {
+    @apply eco-heading text-3xl md:text-4xl;
+  }
+
+  .eco-heading-md {
+    @apply eco-heading text-2xl md:text-3xl;
+  }
+
+  .eco-heading-sm {
+    @apply eco-heading text-lg md:text-xl;
+  }
+
+  .eco-text-muted {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+
+  .eco-text-subtle {
+    @apply text-gray-500 dark:text-gray-400 text-sm;
+  }
+
+  /* Container */
+  .eco-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Grid */
+  .eco-grid {
+    @apply grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  /* Divider */
+  .eco-divider {
+    @apply h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent;
+  }
+
+  /* Loading Skeleton */
+  .eco-skeleton {
+    @apply animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg;
+  }
+}
