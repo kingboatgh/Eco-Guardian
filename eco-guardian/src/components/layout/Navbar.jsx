@@ -8,7 +8,7 @@ import DarkModeToggle from "./DarkModeToggle";
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const { currentUser, logout } = useAuth();
+  const { currentUser, userProfile, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -20,12 +20,20 @@ export default function Navbar() {
 
   const isActive = (path) => location.pathname === path;
 
+  const isAdmin = userProfile?.role === "admin";
+
   const navLinks = [
     { path: "/dashboard", label: "Dashboard", icon: "🏠" },
+    { path: "/carbon", label: "Carbon", icon: "🌱" },
+    { path: "/waste", label: "Waste", icon: "♻️" },
+    { path: "/community", label: "Community", icon: "🌍" },
+    { path: "/analytics", label: "Analytics", icon: "📊" },
     { path: "/events", label: "Events", icon: "🎯" },
     { path: "/marketplace", label: "Marketplace", icon: "🛍️" },
     { path: "/education", label: "Education", icon: "📚" },
     { path: "/leaderboard", label: "Leaderboard", icon: "🏆" },
+    // add extra admin link at end if needed
+    ...(isAdmin ? [{ path: "/admin/dashboard", label: "Admin", icon: "🛠️" }] : []),
   ];
 
   return (
@@ -102,13 +110,25 @@ export default function Navbar() {
                       <div className="px-4 py-2 border-b border-gray-200 dark:border-gray-700">
                         <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
                           {currentUser.email}
+                          {userProfile?.role === "admin" && (
+                            <span className="ml-2 text-xs text-eco-600 dark:text-eco-400 font-semibold">
+                              (admin)
+                            </span>
+                          )}
                         </p>
                       </div>
                       <Link to="/profile">
                         <button className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition">
-                          👤 Profile
+                          👤 My Profile
                         </button>
                       </Link>
+                      {userProfile?.role === "admin" && (
+                        <Link to="/admin/dashboard">
+                          <button className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition">
+                            🛠️ Admin Dashboard
+                          </button>
+                        </Link>
+                      )}
                       <Link to="/settings">
                         <button className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition">
                           ⚙️ Settings

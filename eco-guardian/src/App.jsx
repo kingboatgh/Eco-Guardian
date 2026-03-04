@@ -9,6 +9,15 @@ import Events from "./features/events/Events";
 import Marketplace from "./features/marketplace/Marketplace";
 import EducationHub from "./features/education/EducationHub";
 import Leaderboard from "./features/leaderboard/Leaderboard";
+import AdminRoute from "./components/AdminRoute";  // restrict admin pages to admins
+import AccessDenied from "./features/auth/AccessDenied";
+import AdminDashboard from "./features/admin/AdminDashboard";
+import CarbonTracker from "./features/carbon/CarbonTracker";
+import WasteReporting from "./features/waste/WasteReporting";
+import CommunityLeaderboard from "./features/community/CommunityLeaderboard";
+import EnvironmentalAnalytics from "./features/analytics/EnvironmentalAnalytics";
+import UserProfile from "./features/profile/UserProfile";
+
 
 function ProtectedRoute({ children }) {
   const { currentUser, loading } = useAuth();
@@ -68,11 +77,12 @@ export default function App() {
             />
 
             {/* Protected routes */}
+            {/* user dashboard (all authenticated users) */}
             <Route
               path="/dashboard"
               element={
                 <motion.div
-                  key="dashboard"
+                  key="user-dashboard"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -80,6 +90,26 @@ export default function App() {
                 >
                   <ProtectedRoute>
                     <Dashboard />
+                  </ProtectedRoute>
+                </motion.div>
+              }
+            />
+
+            {/* admin-only dashboard */}
+            <Route
+              path="/admin/dashboard"
+              element={
+                <motion.div
+                  key="admin-dashboard"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ProtectedRoute>
+                    <AdminRoute>
+                      <AdminDashboard />
+                    </AdminRoute>
                   </ProtectedRoute>
                 </motion.div>
               }
@@ -147,14 +177,116 @@ export default function App() {
                   transition={{ duration: 0.3 }}
                 >
                   <ProtectedRoute>
-                    <Dashboard />
+                    <Leaderboard />
                   </ProtectedRoute>
                 </motion.div>
               }
             />
 
+            {/* New Feature Routes */}
+            <Route
+              path="/carbon"
+              element={
+                <motion.div
+                  key="carbon"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ProtectedRoute>
+                    <CarbonTracker />
+                  </ProtectedRoute>
+                </motion.div>
+              }
+            />
+
+            <Route
+              path="/waste"
+              element={
+                <motion.div
+                  key="waste"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ProtectedRoute>
+                    <WasteReporting />
+                  </ProtectedRoute>
+                </motion.div>
+              }
+            />
+
+            <Route
+              path="/community"
+              element={
+                <motion.div
+                  key="community"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ProtectedRoute>
+                    <CommunityLeaderboard />
+                  </ProtectedRoute>
+                </motion.div>
+              }
+            />
+
+            <Route
+              path="/analytics"
+              element={
+                <motion.div
+                  key="analytics"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ProtectedRoute>
+                    <EnvironmentalAnalytics />
+                  </ProtectedRoute>
+                </motion.div>
+              }
+            />
+
+            <Route
+              path="/profile"
+              element={
+                <motion.div
+                  key="profile"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ProtectedRoute>
+                    <UserProfile />
+                  </ProtectedRoute>
+                </motion.div>
+              }
+            />
+
+            {/* Access denied page */}
+            <Route
+              path="/access-denied"
+              element={
+                <motion.div
+                  key="access-denied"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <AccessDenied />
+                </motion.div>
+              }
+            />
+
             {/* Default redirect */}
-            <Route path="*" element={<Navigate to="/dashboard" />} />
+            <Route path="*" element={<Navigate to="/login" />} />
           </Routes>
         </AnimatePresence>
       </Router>

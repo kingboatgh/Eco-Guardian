@@ -5,10 +5,15 @@ Eco-Guardian is a mobile application designed to encourage sustainable living by
 ## 🚀 Features
 
 - 🔐 Firebase Authentication
-- 📊 Real-time Dashboard
+- 📊 Real-time Dashboard for users
 - 🌱 Eco Tips
 - 📝 Activity Log (earn points)
 - 🔥 Firebase Firestore integration
+- 🛡️ **Admin Dashboard** (role-based access)
+  - Manage users and roles
+  - View system statistics
+  - Promote/demote accounts
+
 
 ## 🛠️ Tech Stack
 

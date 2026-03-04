@@ -63,6 +63,10 @@ export default function Login() {
           </div>
           <h1 className="eco-heading-lg mb-2">Welcome Back</h1>
           <p className="eco-text-muted">Sign in to your Eco-Guardian account</p>
+          <p className="text-xs text-amber-600 dark:text-amber-400 mt-1">
+            <strong>Note:</strong> Admin dashboard `/admin/dashboard` is restricted to
+            users with the admin role.
+          </p>
         </motion.div>
 
         {/* Card */}
@@ -75,7 +79,8 @@ export default function Login() {
                 animate={{ opacity: 1, x: 0 }}
                 className="eco-alert-error"
               >
-                <span className="flex-1">⚠️ {error}</span>
+                <span className="text-lg leading-relaxed">❌</span>
+                <span className="flex-1 text-sm leading-relaxed">{error}</span>
               </motion.div>
             )}
 

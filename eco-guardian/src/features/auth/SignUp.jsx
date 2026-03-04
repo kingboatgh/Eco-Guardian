@@ -89,7 +89,8 @@ export default function Signup() {
                 animate={{ opacity: 1, x: 0 }}
                 className="eco-alert-error"
               >
-                <span className="flex-1">⚠️ {error}</span>
+                <span className="text-lg leading-relaxed">❌</span>
+                <span className="flex-1 text-sm leading-relaxed">{error}</span>
               </motion.div>
             )}
 
