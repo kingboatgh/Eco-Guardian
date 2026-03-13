@@ -3,7 +3,7 @@ import { AuthProvider, useAuth } from "./context/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Login from "./features/auth/Login";
-import Signup from "./features/auth/Signup";
+import Signup from "./features/auth/SignUp";
 import Dashboard from "./features/dashboard/Dashboard";
 import Events from "./features/events/Events";
 import Marketplace from "./features/marketplace/Marketplace";
